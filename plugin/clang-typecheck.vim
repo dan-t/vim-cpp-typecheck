@@ -5,8 +5,7 @@ function! s:ClangTypecheckFile(...)
 
    let l:cmd = 'clang-typecheck ' . join(a:000)
    let &makeprg = l:cmd
-   silent update
-   silent lmake
+   lmake
 
    let &makeprg = l:old_makeprg
 endfunction
