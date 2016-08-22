@@ -18,14 +18,14 @@ The plugin supplies the command `CppTypecheckFile`.
 
 Type checking the C++ source file of the current window:
 
-    `:CppTypecheckFile '%:p'`
+    :CppTypecheckFile '%:p'
 
 This will work if the clang compilation database `compile_commands.json` is
 reachable through the directory of the source file upwards the directory tree.
 
 If this isn't the case the database has also to be given:
 
-    `:CppTypecheckFile '%:p' path_to/compile_commands.json`
+    :CppTypecheckFile '%:p' path_to/compile_commands.json
 
 This call will populate the location list of the current window with the type
 check errors - if any are available. The location list can be opened by
