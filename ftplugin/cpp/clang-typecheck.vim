@@ -1,19 +1,19 @@
-if exists('b:did_ftplugin_clang_typecheck') && b:did_ftplugin_clang_typecheck
+if exists('b:did_ftplugin_cpp_typecheck') && b:did_ftplugin_cpp_typecheck
    finish
 endif
 
-let b:did_ftplugin_clang_typecheck = 1
+let b:did_ftplugin_cpp_typecheck = 1
 
-if !exists('s:has_clang_typecheck')
-   let s:has_clang_typecheck = 0
-   if !executable('clang-typecheck')
-      call clang_typecheck#print_error('clang-typecheck is not executable!')
+if !exists('s:has_cpp_typecheck')
+   let s:has_cpp_typecheck = 0
+   if !executable('cpp-typecheck')
+      call cpp_typecheck#print_error('cpp-typecheck is not executable!')
       finish
    endif
-   let s:has_clang_typecheck = 1
+   let s:has_cpp_typecheck = 1
 endif
 
-if !s:has_clang_typecheck
+if !s:has_cpp_typecheck
    finish
 endif
 
@@ -23,10 +23,10 @@ else
    let b:undo_ftplugin = ''
 endif
 
-command! -nargs=* -complete=file ClangTypecheckFile call clang_typecheck#exec(<f-args>)
+command! -nargs=* -complete=file CppTypecheckFile call cpp_typecheck#exec(<f-args>)
 
 let b:undo_ftplugin .= join(map([
-   \ 'ClangTypecheckFile',
+   \ 'CppTypecheckFile',
    \ ], '"delcommand " . v:val'), ' | ')
 
-let b:undo_ftplugin .= ' | unlet b:did_ftplugin_clang_typecheck'
+let b:undo_ftplugin .= ' | unlet b:did_ftplugin_cpp_typecheck'
