@@ -27,9 +27,13 @@ If this isn't the case the database has also to be given:
 
     :CppTypecheckFile '%:p' path_to/compile_commands.json
 
-This call will populate the location list of the current window with the type
-check errors - if any are available. The location list can be opened by
-calling `:lwindow`.
+It's also possible to use an other compiler for the type checking than the one defined
+in the database, as long as the compiler arguments are compatible (which is the case for gcc and clang):
+
+    :CppTypecheckFile --compiler clang '%:p' path_to/compile_commands.json
+
+The call of `CppTypecheckFile` will populate the location list of the current window with the type
+check errors - if any are available. The location list can be opened by calling `:lwindow`.
 
 Configuration
 -------------
