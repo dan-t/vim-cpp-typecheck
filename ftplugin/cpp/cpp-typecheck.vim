@@ -24,9 +24,11 @@ else
 endif
 
 command! -nargs=* -complete=file CppTypecheckFile call cpp_typecheck#exec(<f-args>)
+command! -nargs=* -complete=file CppPreprocessFile call cpp_typecheck#preprocess(<f-args>)
 
 let b:undo_ftplugin .= join(map([
    \ 'CppTypecheckFile',
+   \ 'CppPreprocessFile',
    \ ], '"delcommand " . v:val'), ' | ')
 
 let b:undo_ftplugin .= ' | unlet b:did_ftplugin_cpp_typecheck'
