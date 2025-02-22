@@ -11,6 +11,7 @@ endfunction
 function! cpp_typecheck#preprocess(...)
    let l:cmd = 'cpp-typecheck --preprocess ' . join(a:000)
    new
+   setlocal buftype=nofile bufhidden=hide noswapfile
    exec ":read !" . l:cmd
    setfiletype cpp
 endfunction
